@@ -67,7 +67,7 @@ mso-fareast-theme-font:minor-latin" lang="EN-US"> ![](https://devocean.sk.com/e
 
 저는 Object Detection을 구현한 모델 중에서도 가장 널리 알려지고, 익숙한 YOLO모델을 사용해보았어요.
 Yolov3 tiny model로 object detection 후 박스 범위에 따라 자동 크롭을 구현하였습니다.
-<span style="mso-no-proof:yes">![]() ![](https://devocean.sk.com/editorImg/2022/11/11/b0514de154f8d7924a8fe322cd1f34502f6d027736b9e8531e3e50adfeeeae2b)![]()</span>
+<span style="mso-no-proof:yes">![]() ![](https://devocean.sk.com/editorImg/2022/11/11/b0514de154f8d7924a8fe322cd1f34502f6d027736b9e8531e3e50adfeeeae2b)</span>
 
 <br>
 객체를 중심을 잡히는 박스의 <span lang="EN-US">x,y,w,h</span>을 기준으로 임의로 어느정도 범위를 정해서 크롭 되도록 하였습니다<span lang="EN-US">.</span>
