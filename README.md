@@ -3,6 +3,7 @@
 
 안녕하세요! SKT AI Fellowship에서 **Live Tracking** 과제를 연구하고 있는 *Team* **<span style="color: #0ac90b">금쪽이들</span>**입니다.
 
+
 벌써 과제 연구의 중간 지점을 지나고 있는데, 어떻게 연구가 흘러가고 있는지 궁금하지 않으신가요?
 오늘은 현재까지 진행된 연구 과정을 소개하려고 합니다!
 ![](https://devocean.sk.com/editorImg/2022/11/30/6ea52f90b64a03fd9b477ba3655664167682d3566bc2d2e7638d8f833865014e)
