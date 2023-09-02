@@ -129,10 +129,14 @@ Detection 중 발생되는 Noise를 처리하는데 도움을 준다는 특징�
 <span data-reactroot="" class="notion-enable-hover" data-token-index="0" style="font-weight:600">Object Detection에서 단순히 box의 좌표 차이를 통해 loss를 구하는 것보다 IoU를 loss에 활용하는 것이 regression loss에 더 적합해요.</span>
 
 
+
+
 **헝가리안 알고리즘(Hungarian matching algorithm**\) 은 O\(\|V^3\|\)의 시간복잡도로 좀 더 효율적이고 빠르게 해결하는 알고리즘이에요\.
 가중치가 있는 이분 그래프(weighted bitarted graph)에서 maximum weight matching을 찾기 위한 알고리즘이죠.
 헝가리안 알고리즘에 적용되는 핵심 아이디어는 바로 “Cost matrix에서 row, column 방향으로 값을 빼거나 더한 후 최적의 연결(optimal matching)을 찾는 것은 Original Cost matrix에서 최적의 연결을 찾은 결과와 동일하다” 이에요.
 즉, 복잡한 숫자로 이루어진 인접 행렬을 쉽게 변형해서 최적의 선택이 무엇인지 알기 쉽게 만든 후, 선택하자는 것이에요.
+
+
 
 
 <span lang="EN-US">Deep SORT</span>는 <span lang="EN-US">sort</span>를 확장한 개념인데요. <span lang="EN-US">Sort</span>는<span lang="EN-US"> Kalman filter</span>가 뛰어나긴 하지만<span lang="EN-US">, 그 효율성에도 불구하고 </span>실제 상황에서 발생하는<span lang="EN-US"> Occulusion</span>이나<span lang="EN-US"> ID switching </span>에는 불안정하다는 한계점이 있기 때문이에요<span lang="EN-US">.</span>
@@ -141,11 +145,15 @@ Detection 중 발생되는 Noise를 처리하는데 도움을 준다는 특징�
 mso-themecolor:text1;mso-themetint:166">다른 사람들에 의해 혼자 걷고 있는 남성의</span><span lang="EN-US"> BBox</span>가 사라진 상황<span lang="EN-US">(Tracking X)</span>
 
 
+
+
 <span lang="EN-US">\* Occulusion</span>은 위와 같이 개체가 어떤 상황에 의해 가려지는 현상을 말합니다<span lang="EN-US">.</span>
 ![](https://devocean.sk.com/editorImg/2022/11/11/72c88d82bd4633d8c10da9c1a102e37ba1131ae2cf7ad851cfba67a289b8cf84)
 <span style="color: rgb(0, 0, 0); font-family: Noto Sans Light;">\* ID Switching은 MOT의 특징 중 다양한 개체가 움직일 때, ID의 추적이 변경될 수 있다는 것이에요</span>
 <span style="font-family: Noto Sans Light;">예를 들어 위와 같이 축구 경기를 위에서 관찰하고 있을 때, 선수들의 ID를 추적하는 상황이 제대로 이뤄지지 않는다는 점이 있습니다.</span>
 <span style="mso-no-proof:yes">![]()![](https://devocean.sk.com/editorImg/2022/11/11/5a6699343cc37effe3491af23fb311c7d83aa5d94b27824680c0f00cb5a25ee5)</span>
+
+
 
 
 <span style="mso-bidi-font-size:10.0pt;
@@ -156,6 +164,7 @@ mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:minor-latin;mso-bid
 장점은 매우 빠른 추적으로<span lang="EN-US"> real-time </span>가능하고 높은 정확도를 가져<span lang="EN-US"> sort</span>에 비해<span lang="EN-US"> ID swithing이 </span>감소한다는 점이에요<span lang="EN-US">.</span>
 ![](https://devocean.sk.com/editorImg/2022/11/11/9f06af72a23f407d33f0cd4d19a8b86dbbdcfa1707bc3464d2970c4977c8cf83)
 Deep Sort와 Sort의 성능을 분석한 논문 자료입니다.
+
 
 
 
@@ -176,6 +185,7 @@ Deep Sort와 Sort의 성능을 분석한 논문 자료입니다.
 그래서 <span lang="EN-US">YOLOv4</span>를 테스트 해보는 데는 실패하였습니다<span lang="EN-US">.</span>
 <span lang="EN-US">GPU</span>를 <span lang="EN-US">ssh</span>로 연결해서 사용해본 적은 처음이라<span lang="EN-US">, </span>많이 헤매고 시간이 들었습니다<span lang="EN-US">.</span>
 특히 <span lang="EN-US">cuda</span>와 <span lang="EN-US">pytorch </span>버전 호환 문제가 계속 발생하였습니다<span lang="EN-US">. YOLOv7</span>은 <span lang="EN-US">YOLOv4</span>보다는 실행시키는 것이 간단해서 실행시키는 데는 성공하였습니다<span lang="EN-US">.</span>
+
 
 
 모델 테스트에 있어서 몇가지 한계점이 존재하였습니다<span lang="EN-US">.</span>
