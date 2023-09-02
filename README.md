@@ -74,8 +74,9 @@ Yolov3 tiny model로 object detection 후 박스 범위에 따라 자동 크롭�
 <span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
 minor-latin">매 </span><span lang="EN-US">Sprint </span>중간과 사이사이 팀원들과 주기적으로 회의 시간을 가졌는데요<span lang="EN-US">. </span>팀원들과 회의 후<span lang="EN-US">, </span>박스 기준으로 크롭할 필요성을 없다고 판단되었습니다<span lang="EN-US">.</span>
 <span lang="EN-US">Detection</span>된 객체의 중심 좌표값만 알면<span lang="EN-US">, </span>그것을 중심으로 <span lang="EN-US">16:9, 3:4 </span>와 같이 일정 비율로 <span lang="EN-US">crop</span>할 수 있다는 거죠<span lang="EN-US">!</span>
-![](https://devocean.sk.com/editorImg/2022/11/11/d55aaa5014ac8f438f75486744d4b508ceaf9eb47f3a84500072dfd477ca97dd)
+!
 <img width="817" alt="image" src="https://github.com/SKT-AI-FELLOWSHIP-LIVE-TRACKING/Live_Tracking_yolo/assets/81521991/9c602afb-91ad-43f2-811e-8f5bd61e2d8b">
+
 
 <span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
 minor-latin">회의 후</span><span lang="EN-US">, </span>수정한 비율로 <span lang="EN-US">crop</span>해보았습니다<span lang="EN-US">. Yolo tiny </span>모델을 사용하였을 때<span lang="EN-US">, </span>몇가지 문제점이 존재했습니다<span lang="EN-US">. Real-time</span>은 <span lang="EN-US">fps</span>가 <span lang="EN-US">30</span>이상으로 나오면 안정적으로 구현 가능합니다<span lang="EN-US">.</span>
@@ -94,6 +95,7 @@ minor-latin">또한 </span><span lang="EN-US">mediapipe</span>의 <span lang="EN
 <span style="mso-no-proof:yes">![]()</span>mediapipe - blazepose
 
 
+
 객체를 인식하는 것만 하는 것이 아니라<span lang="EN-US">, </span>얼굴 좌표 값을 통해 얼굴을 인식한다면 조금 더 높은 정확도로 객체를 트래킹할 수 있기 때문이에요<span lang="EN-US">!</span>
 <span lang="EN-US">Blazeface</span>를 통해 인식한 얼굴과 <span lang="EN-US">Object Detection</span>모델을 통해 인식한 객체 중<span lang="EN-US">, </span>더 높은 정확도를 보이는 <span lang="EN-US">Box</span>를 기준으로 <span lang="EN-US">Tracking</span>을 진행하도록 알고리즘을 작성하였습니다<span lang="EN-US">.</span>
 <span style="mso-fareast-font-family:맑은 고딕;
@@ -103,6 +105,8 @@ minor-latin">하지만 여전히 </span><span lang="EN-US">tracking</span>이 �
 <span style="mso-fareast-font-family:맑은 고딕;
 mso-fareast-theme-font:minor-latin" lang="EN-US">Sprint3</span><span style="mso-fareast-font-family:
 맑은 고딕;mso-fareast-theme-font:minor-latin">가 끝나고 멘토님과 진행한 미팅에서 매 프레임 마다 </span><span lang="EN-US">detection</span>을 진행하기 때문에 요구되는 연산이 많으니<span lang="EN-US">, detection</span>을 듬성듬성 수행해서 연산량을 줄이라는 피드백을 받았습니다<span lang="EN-US">.</span>
+
+
 <span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
 minor-latin">더하여</span><span lang="EN-US"> Tracking </span>알고리즘도 더 좋은 성능을 위한 방법을 고민해보았습니다<span lang="EN-US">.</span>
 <span style="mso-fareast-font-family:맑은 고딕;
@@ -110,6 +114,8 @@ mso-fareast-theme-font:minor-latin" lang="EN-US"> </span>
 <span lang="EN-US">Object Tracking Methods </span>자료 조사를 진행한 결과<span lang="EN-US">, SORT(</span><span class="notion-enable-hover">Simple Online Realtime Tracker)에 대해 알게되었습니다</span><span lang="EN-US">. SORT</span>는 다중 객체 탐지 알고리즘<span lang="EN-US"> MOT(Multi Object Tracking) </span>입니다<span lang="EN-US">.</span>
 ![](https://devocean.sk.com/editorImg/2022/11/11/9fa4264f1bc03cca6f72d616b73b8245057a76bd6ba2e74372051a3cf3af6218)
 탐지된 객체의 경계상자를 이용하여 객체의 속도를 [<span lang="EN-US">칼만 필터(Kalman Filter)</span>]()로 추정하여 다음 프레임에서 객체의 위치를 예측하는 방식으로 사용됩니다<span lang="EN-US">.</span>
+
+
 Kalman filter는 이전 프레임에 등장한 개체를 이용하여 다음 프레임의 개체의 위치를 예측하고 측정합니다.
 Detection 중 발생되는 Noise를 처리하는데 도움을 준다는 특징이 있습니다.
 영상에서의 Tracking은 선형성(물체가 순간적으로 사라지거나 나타나지 않음)을 나타내기 때문에 영상 Tracking에서 적합하다고 할 수 있습니다.
@@ -152,6 +158,7 @@ mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:minor-latin;mso-bid
 Deep Sort와 Sort의 성능을 분석한 논문 자료입니다.
 
 
+
 위와 같이 조사한 <span lang="EN-US">SORT </span>알고리즘을 사용해서 <span lang="EN-US">Tracking </span>성능을 개선해보기로 하였습니다<span lang="EN-US">!</span>
 <span lang="EN-US">SORT</span>를 사용하였을 때<span lang="EN-US">, Tracking</span>이 끊기면서 실행이 되는 문제점이 발생해서 <span lang="EN-US">Deep SORT</span>로 시도를 해보았습니다<span lang="EN-US">.</span>
 <span class="notion-enable-hover">Deep SORT</span>는 기존<span lang="EN-US"> SORT</span>와 차이점이 있다면 <span lang="EN-US">matching cascade</span>를 진행한다는 점이에요<span lang="EN-US">.</span>
@@ -160,6 +167,7 @@ Deep Sort와 Sort의 성능을 분석한 논문 자료입니다.
 또<span lang="EN-US"> sort</span>랑 다르게 이미지를 <span lang="EN-US">feature extracting</span>한다는 점이 큰 차이였습니다<span lang="EN-US">.</span>
 하지만 <span lang="EN-US">Deep SORT</span>를 사용하였을 때도<span lang="EN-US">, Tracking</span>이 잘되지 않는 문제가 발생하였습니다<span lang="EN-US">.</span>
 결국 최종적으로 <span lang="EN-US">FastMOT</span>의 로직을 따와서 해결하여 현재 모델을 완성하였습니다<span lang="EN-US">!</span>
+
 
 
 멘토님께서 연구를 위해서 <span lang="EN-US">GPU</span>서버를 사용할 수 있게해주셔서<span lang="EN-US">, Object Detection </span>모델 테스트용으로 사용해보았습니다<span lang="EN-US">.</span>
