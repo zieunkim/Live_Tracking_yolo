@@ -75,6 +75,8 @@ Yolov3 tiny model로 object detection 후 박스 범위에 따라 자동 크롭�
 minor-latin">매 </span><span lang="EN-US">Sprint </span>중간과 사이사이 팀원들과 주기적으로 회의 시간을 가졌는데요<span lang="EN-US">. </span>팀원들과 회의 후<span lang="EN-US">, </span>박스 기준으로 크롭할 필요성을 없다고 판단되었습니다<span lang="EN-US">.</span>
 <span lang="EN-US">Detection</span>된 객체의 중심 좌표값만 알면<span lang="EN-US">, </span>그것을 중심으로 <span lang="EN-US">16:9, 3:4 </span>와 같이 일정 비율로 <span lang="EN-US">crop</span>할 수 있다는 거죠<span lang="EN-US">!</span>
 ![](https://devocean.sk.com/editorImg/2022/11/11/d55aaa5014ac8f438f75486744d4b508ceaf9eb47f3a84500072dfd477ca97dd)
+<img width="817" alt="image" src="https://github.com/SKT-AI-FELLOWSHIP-LIVE-TRACKING/Live_Tracking_yolo/assets/81521991/9c602afb-91ad-43f2-811e-8f5bd61e2d8b">
+
 <span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
 minor-latin">회의 후</span><span lang="EN-US">, </span>수정한 비율로 <span lang="EN-US">crop</span>해보았습니다<span lang="EN-US">. Yolo tiny </span>모델을 사용하였을 때<span lang="EN-US">, </span>몇가지 문제점이 존재했습니다<span lang="EN-US">. Real-time</span>은 <span lang="EN-US">fps</span>가 <span lang="EN-US">30</span>이상으로 나오면 안정적으로 구현 가능합니다<span lang="EN-US">.</span>
 하지만 <span lang="EN-US">yolo-tiny</span>를 사용하였을 때<span lang="EN-US">, fps</span>가<span lang="EN-US"> 23-24 </span>정도로 나왔습니다<span lang="EN-US">. </span>또한 <span lang="EN-US">crop</span>기능을 넣으면서<span lang="EN-US"> detection</span>이 느려지고 부드럽게 <span lang="EN-US">crop</span>이 이어지지 않았습니다<span lang="EN-US">.</span>
