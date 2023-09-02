@@ -1,152 +1,186 @@
 # Live_Tracking_yolo
 
 
-안녕하세요! SKT AI Fellowship에서 **Live Tracking** 과제를 연구하고 있는 *Team* **<span style="color: #0ac90b">금쪽이들</span>**입니다.
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">안녕하세요</span><span lang="EN-US">! SKT AI Fellowship 5</span>번 연구과제 <span lang="EN-US"><</span>라이브 트래킹<span lang="EN-US">></span>을 연구하고 있는 <span lang="EN-US">Team</span>금쪽이들의 김지은 입니다<span lang="EN-US">.</span>
+지금부터 제가 <span lang="EN-US">AIF</span>과제를 위해서 공부해왔던 것들에 대해 소개해보려고 해요<span lang="EN-US">! 😀</span>
+<span style="mso-fareast-font-family:맑은 고딕;
+mso-fareast-theme-font:minor-latin" lang="EN-US"> </span>
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">처음 제 글을 읽으시는 분들을 위해, 간단하게 과제 소개를 해볼게요.</span>
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">라이브 트래킹이란 실시간으로 촬영 중인 영상 내에서 움직이는 피사체를 인식해 자동으로 트래킹해주는 기술이에요</span><span lang="EN-US">.</span>
+![](https://devocean.sk.com/editorImg/2022/11/11/a9c479b45253dcd845847102724ef3f5c688e17cf57e501b7d3eb212e8f821b7)
 
-![](https://devocean.sk.com/editorImg/2022/11/30/6ea52f90b64a03fd9b477ba3655664167682d3566bc2d2e7638d8f833865014e)
-
-## **Overview**
-
-**Live Tracking** 과제는 1인 또는 소규모의 미디어 콘텐츠 제작자들을 위해, 고정된 카메라에서 피사체를 실시간으로 트래킹하여 스트리밍하는 소프트웨어 및 서비스를 구현하는 것이 목적입니다.
-과제 이해를 위해 live tracking 서비스가 활용되는 예시를 말씀드릴게요.
-고정된 카메라로 공을 차는 사람을 촬영한다고 가정하겠습니다. 이 장면에서 공과 공을 차는 사람을 인식하고, 트래킹한 장면을 실시간으로 스트리밍한다면, 시청자는 실시간으로 트래킹 되는 영상을 즐길 수 있습니다.
-궁극적으로 시청자에게는 풍부한 콘텐츠를, 제작자에게는 풍부한 제작소스를 제공할 수 있습니다!
-![](https://devocean.sk.com/editorImg/2022/11/30/9f514da724b7d8e72ff917d7bc8630af5a55dd683e6c40b6c2ae0caf71e2de4f)
-
-
-소프트웨어 다이어그램은 다음과 같습니다.
-제작자로부터 카메라로 촬영 중인 영상을 실시간으로 받아와서 프레임 단위로 Object detection과 SceneCropping을 진행합니다. 그 결과를 WebRTC API를 통해 실시간으로 송출하게 됩니다.
-앞으로 말씀 드릴 주요 개발 항목도 Object detection, SceneCropping, WebRTC 입니다!
-![](https://devocean.sk.com/editorImg/2022/11/30/0e4888cf2151211b196a2f1108fbc7ad25f5601f42c998db85b3bfdbcd20c1d1)
+***
 
 
-저희가 구현할 tracking 관련 기술 동향에는 mediapipe solution인 autoflip과 apple의 ipad에 탑재된 center stage라는 기술이 있습니다.
-![image](https://devocean.sk.com/news/Live_Tracking_4.gif)
-<span style="font-family:Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Noto Color Emoji,Segoe UI Symbol,Android Emoji,EmojiSymbols;line-height:1em;white-space:nowrap;font-size:1em" aria-label="✔️" role="image">✔️ </span>**Autoflip**은 촬영된 비디오를 입력으로 받아 detection 과 crop 및 tracking을 진행합니다. 저희의 연구 과제인 라이브 트래킹은 카메라 입력 영상을 실시간 처리를 한다는 점에서 큰 차이가 있습니다.
-![image](https://devocean.sk.com/news/Live_Tracking_5.gif)
-<span style="font-family:Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Noto Color Emoji,Segoe UI Symbol,Android Emoji,EmojiSymbols;line-height:1em;white-space:nowrap;font-size:1em" aria-label="✔️" role="image">✔️ </span>**Center Stage**는 ipad를 이용한 화상통화 중 사용되는 기술로 실시간 처리가 가능합니다.
-그러나 이 기술은 ipad에 탑재된 카메라를 하드웨어 제어를 통해 zoom in/out 트래킹을 하는 반면, 라이브 트래킹은 입수 되는 영상 처리를 통해 프레임을 처리하기 때문에 전용 카메라 하드웨어를 사용하는 center stage보다 범용적으로 사용될 수 있다는 것이 큰 장점 입니다. 또한 ML 및 영상 처리는 소프트웨어만으로도 구현 가능하다는 점도 주목할만 합니다.
+기술의 배경 및 필요성에 대해서도 궁금하시죠<span lang="EN-US">?</span>
+현재 비디오 스트리밍 분야에서 유튜브<span lang="EN-US">, </span>트위치 등의 라이브 스트리밍 플랫폼이 활발하게 이용되고 있어요<span lang="EN-US">.</span>
+이러한 환경 속에 직접 콘텐츠를 제작<span lang="EN-US">, </span>스트리밍하려는 개인 콘텐츠 창작자들이 다수 등장하고 있으며<span lang="EN-US">, </span>라이브 콘텐츠 제작에 관심이 커지고 있는 트렌드입니다<span lang="EN-US">.</span>
+이런 트렌드 속 라이브 트래킹 기술은 창작자 입장에서도<span lang="EN-US">, </span>시청자 입장에서도 편리하고 필요한 기술이라고 할 수 있어요<span lang="EN-US">!</span>
+기술 이해를 조금 더 쉽게 도와드리자면<span lang="EN-US">, mediapipe</span>의 <span lang="EN-US">Autoflip</span>과 아이패드의 <span lang="EN-US">center stage </span>기술을 비슷한 기술로 꼽을 수 있어요.
 
 
-최종 산출물은 다음과 같은 웹사이트 형태로 산출되며, 광각카메라를 통해 입력되는 영상에서 피사체를 detection하고 사용자가 원하는 화면 비율에 따라 crop및 트래킹하여 실시간으로 스트리밍 하는 서비스입니다.
-![](https://devocean.sk.com/editorImg/2022/11/30/cf8ec0a95d5decd8702099dbacad50291486457039ff0c267089fe0f61defce1)
+최종 산출물은 다음과 같은 웹사이트 형태로 산출될 예정이에요.
+![](https://devocean.sk.com/editorImg/2022/11/11/af1ee8908f5bf07f039eaf75405db9a8456c35740c8a879ed4ab42d6c64e5802)
+광각카메라를 통해 입력되는 영상에서 피사체를 detection하고 사용자가 원하는 화면 비율에 따라 crop및 트래킹하여 실시간으로 스트리밍 하는 서비스가 될 예정입니다!
+
+***
 
 <br>
-## **Object Detection**
+<span style="mso-fareast-font-family:맑은 고딕;
+mso-fareast-theme-font:minor-latin" lang="EN-US">그럼 이제 제가 공부한 분야에 대해 소개해볼게요!</span>
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">개발 분야는 크게 모델링과 </span><span lang="EN-US">WebRTC </span>부분으로 나뉘는데요<span lang="EN-US">. </span>저는 모델링 개발을 담당하였습니다<span lang="EN-US">.</span>
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">모델 개발 초기 진행 상황부터 현재 개발 상황까지의 과정에 대해 살펴볼게요</span><span lang="EN-US">!</span>
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">저희 팀은 </span><span lang="EN-US">2-3</span>주의 <span lang="EN-US">sprint</span>를 설정하고 그에 따라서 정한 <span lang="EN-US">task</span>들을 해결하며 개발 과정을 설정하였습니다<span lang="EN-US">.</span>
 
-다음은 저희가 detection을 구현하기 위해 사용한 모델 및 개발 이슈에 관해 알려드릴게요.
-저희는 detection의 정확도를 높이기 위해 face detection과 object detection을 구현하였습니다.
-![](https://devocean.sk.com/editorImg/2022/11/30/d5d907beb762790db303d3477c20f45c82c4e1549705c93aea95b4ac3dc367d6)
 
-먼저 face detection은 mediapipe의 solution을 활용하였습니다. blazeface기반의 얼굴검출 프레임워크로 보이는 사진처럼 총 6개의 랜드마크로 얼굴을 감지합니다.
-
-
-
-object detection은 두개의 모델을 사용해보았습니다. 측정지표는 mAP와 fps를 사용했습니다.
-앞으로 말씀 드릴 개발 상황 및 이슈는 ***Apple M1 CPU 8 cores, mem 16GB LPDDR4*** 를 개발 환경으로 사용한 점을 참고해주세요!
-![](https://devocean.sk.com/editorImg/2022/11/30/901cec12514ddbc16c577f381e6b7242bcc856d6a17961250fa4196a3501bcd7)
-개발 초기에 fps와 bounding box의 크게 두가지 이슈가 존재하였습니다.
-
-<span style="font-family:Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Noto Color Emoji,Segoe UI Symbol,Android Emoji,EmojiSymbols;line-height:1em;white-space:nowrap;font-size:1em" aria-label="✔️" role="image">✔️ </span>fps이슈에 대해 먼저 알려드릴게요. 실시간 처리를 구현하려면 fps 30이상의 성능이 필요한데, 처음 MobileNet v2 기반 ssd 모델을 돌렸을 때 fps가 2\~3프레임 정도 밖에 나오지 않을 정도로 낮았습니다.
-알고리즘 처리를 최대한 단순화해서 fps를 약 **1**6 프레임까지 올리는데에 성공하였으나, 하지만 여전히 실시간 처리를 구현하기에는 부족하였습니다. yolov3-tiny모델을 사용했을 때는 fps가 23-24로 역시 실시간처리로 구현하기에 부족하였습니다.
-
-<span style="font-family:Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Noto Color Emoji,Segoe UI Symbol,Android Emoji,EmojiSymbols;line-height:1em;white-space:nowrap;font-size:1em" aria-label="✔️" role="image">✔️ </span>두번째로 bounding box가 잘 생성이 되지 않는 이슈가 존재하였습니다.
-mediapipe autoflip에 기재된 anchor를 참고하여 box 좌표 값들을 decoding하였지만 bounding box가 피사체를 담아내지 못하였습니다.
-
-![](https://devocean.sk.com/editorImg/2022/11/30/60fd43da698f1826fe83921777d20b5f6e214f51f33a7b530d00c7328f230967)
+각 Sprint 별로 과제 연구가 어떻게 이루어졌는지 궁금하시죠?
+<span style="mso-fareast-font-family:맑은 고딕;
+mso-fareast-theme-font:minor-latin" lang="EN-US">Sprint1</span><span style="mso-fareast-font-family:
+맑은 고딕;mso-fareast-theme-font:minor-latin">에서는 환경 세팅 및 자료 조사를 진행하였어요</span><span lang="EN-US">. AIF </span>과제를 진행하며 <span lang="EN-US">Mac</span>을 처음 사용해보았기 때문에<span lang="EN-US">, </span>익숙해지는 과정을 거쳤답니다<span lang="EN-US">.</span>
+제일 먼저 앞서 말씀드린 <span lang="EN-US">mediapipe</span>의 <span lang="EN-US">Autoflip </span>코드를 사용해보았어요<span lang="EN-US">.</span><span style="mso-fareast-font-family:맑은 고딕;
+mso-fareast-theme-font:minor-latin" lang="EN-US"> </span>
+<span style="mso-fareast-font-family:맑은 고딕;
+mso-fareast-theme-font:minor-latin" lang="EN-US"> ![](https://devocean.sk.com/editorImg/2022/11/11/c21cae98a1dba707395108f6dedbe36ab481f9d6663738a1670567296a881f77)</span>
 
 <br>
-앞서 말씀 드렸던 이슈들은 mobilenet v1기반의 ssd모델로 바꾸었더니 해결되었습니다.
-모바일넷v1과 v2는 성능 면에서는 차이가 거의 없으나, 속도는 v1이 훨씬 빨랐습니다. 더하여 tensorflow에서 제공하는 함수로 사용하여 속도를 높일 수 있었습니다.
+**Autoflip 코드 실행**
+김연아 선수의 무대 영상을 Autoflip을 이용하여 트래킹한 결과 입니다.
+물론 Autoflip을 사용해보는 것도 쉽지는 않았어요. 하지만 많은 에러들을 해결하고 저희가 구현하고자하는 라이브 트래킹과 비슷한 기술을 경험해보았습니다!
+
+
+원래 계획은 mediapipe의 이 Autofilp을 사용하여 실시간 입력을 통해서 라이브 트래킹을 구현하려고 하였어요.
+하지만 직접 사용해보니, Autoflip의 로직 자체가 많이 복잡하고, 실시간 Input을 사용하는 저희 팀의 과제에 사용하는 것은 불가능하였습니다.
+그래서 객체를 인식하는 기술인 Object Detection과 Tracking알고리즘을 통해서 직접 개발하기로 결정하였습니다.
+앞으로 말씀 드릴 개발 내용은 Autoflip의 로직을 많이 참고하여서 연구하였습니다!
+
+
+저는 Object Detection을 구현한 모델 중에서도 가장 널리 알려지고, 익숙한 YOLO모델을 사용해보았어요.
+Yolov3 tiny model로 object detection 후 박스 범위에 따라 자동 크롭을 구현하였습니다.
+<span style="mso-no-proof:yes">![]() ![](https://devocean.sk.com/editorImg/2022/11/11/b0514de154f8d7924a8fe322cd1f34502f6d027736b9e8531e3e50adfeeeae2b)![]()</span>
 
 <br>
-## **Scene Cropping**
-
-다음으로는 **Scene Cropping** 개발 상황에 대해 알려드릴게요!
-우선 두 모델에서 얻은 디텍션 정보들을 종합하고 mAP score에 따라 정렬하는 방식으로 정보를 전처리하였습니다.
-![](https://devocean.sk.com/editorImg/2022/11/30/3e90a0a48db0b7bd49ad9f4edbe87893a6837dd2ee495913e332578414f96089)
-또한 처리할 좌표를 줄이고자 한 사람 안에서 잡히는 face 좌표와 object 좌표 중 mAP score가 높은 정보만 남기는 방식을 채택했습니다.
-
-
-
-Scene Cropping을 구현하기 위해서는 detection 정보들을 이용해서 crop할 프레임의 중심 좌표를 정해야 합니다.
-✔️ 첫 번째로 디텍션 정보가 없을 때는 원본 프레임의 중심을 기준으로 crop하였습니다. 해당 경우에서는 프레임을 자르지 않고 원본 프레임을 그대로 보여주는 것도 고려하고 있습니다.
-✔️ 두 번째로 디텍션 정보가 있을 때입니다. 가장 mAP score가 높은 정보 기준으로 순차적으로 탐색하면서 설정한 경계 범위 안에 다른 디텍션의 중심 좌표가 들어올 수 있을 때, 해당 정보를 추가하는 방식으로 구현하고 있습니다.
-![image](https://devocean.sk.com/news/Live_Tracking_11.gif)
-
-
-
-<br>
-Scene Cropping시에는, 위 사진과 같이 프레임이 흔들리는 경우가 발생합니다. 이러한 문제가 발생하는 이유는 피사체의 위치가 크게 바뀌지 않더라도 모델이 주는 좌표 값은 바뀌기 때문입니다.
-따라서 프레임을 잡아주기 위해 프레임 보간법을 고안하였습니다. 보간은 두 지점의 값 사이에 위치한 값을 추정하는 것을 의미합니다.
-crop할 두 프레임 사이에 중심 좌표 차이가 존재할 때, 그대로 전송하면 프레임이 흔들리는 경우가 발생합니다. 따라서 두 중점 좌표를 기준으로 보간한 값들로 crop한 프레임들을 송출하여 영상이 자연스럽게 보이도록 할 때 프레임 보간을 사용합니다.
-
-
-
-기존의 프레임 보간법을 실시간으로 사용하는 데에는 다음과 같은 문제점들이 있습니다.
-✔️ interpolation은 두 프레임을 기준으로 이루어져야 하는데 실시간 스트리밍에서는 다음에 오는 프레임을 알 수 없습니다.
-✔️ 실시간에서는 또한 timestamp를 고려할 수 없으며 프레임과 프레임 사이에 다른 프레임들을 채우는 것은 불가능합니다.
-![](https://devocean.sk.com/editorImg/2022/11/30/b12d03863001ea9bb7e027fbf82c33ecec805a2be7a5f15340e1f3ac34effd62)
-
-따라서 다음과 같
-
-은 방법으로 앞의 문제들을 해결하였습니다.
-우선 이전 프레임의 중심 좌표를 저장하여 현재 프레임과 이전 프레임의 좌표를 기준으로 보간을 진행하고 있습니다.
-시간 정보에 대한 문제는 보간할 프레임의 개수를 미리 정하는 방식으로 해결하였습니다. 보간법은 euclidean norm(유클리디엄 놈)을 사용하고 있습니다.
+객체를 중심을 잡히는 박스의 <span lang="EN-US">x,y,w,h</span>을 기준으로 임의로 어느정도 범위를 정해서 크롭 되도록 하였습니다<span lang="EN-US">.</span>
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">매 </span><span lang="EN-US">Sprint </span>중간과 사이사이 팀원들과 주기적으로 회의 시간을 가졌는데요<span lang="EN-US">. </span>팀원들과 회의 후<span lang="EN-US">, </span>박스 기준으로 크롭할 필요성을 없다고 판단되었습니다<span lang="EN-US">.</span>
+<span lang="EN-US">Detection</span>된 객체의 중심 좌표값만 알면<span lang="EN-US">, </span>그것을 중심으로 <span lang="EN-US">16:9, 3:4 </span>와 같이 일정 비율로 <span lang="EN-US">crop</span>할 수 있다는 거죠<span lang="EN-US">!</span>
+![](https://devocean.sk.com/editorImg/2022/11/11/d55aaa5014ac8f438f75486744d4b508ceaf9eb47f3a84500072dfd477ca97dd)
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">회의 후</span><span lang="EN-US">, </span>수정한 비율로 <span lang="EN-US">crop</span>해보았습니다<span lang="EN-US">. Yolo tiny </span>모델을 사용하였을 때<span lang="EN-US">, </span>몇가지 문제점이 존재했습니다<span lang="EN-US">. Real-time</span>은 <span lang="EN-US">fps</span>가 <span lang="EN-US">30</span>이상으로 나오면 안정적으로 구현 가능합니다<span lang="EN-US">.</span>
+하지만 <span lang="EN-US">yolo-tiny</span>를 사용하였을 때<span lang="EN-US">, fps</span>가<span lang="EN-US"> 23-24 </span>정도로 나왔습니다<span lang="EN-US">. </span>또한 <span lang="EN-US">crop</span>기능을 넣으면서<span lang="EN-US"> detection</span>이 느려지고 부드럽게 <span lang="EN-US">crop</span>이 이어지지 않았습니다<span lang="EN-US">.</span>
+또한 아무래도 속도를 위해서 <span lang="EN-US">tiny</span>모델을 사용하다보니<span lang="EN-US">, Detection</span>의 정확도도 떨어지는 단점이 존재하였습니다<span lang="EN-US">.</span>
+<span style="mso-fareast-font-family:맑은 고딕;
+mso-fareast-theme-font:minor-latin" lang="EN-US"> </span>
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">팀원 중 같이 모델링 개발 부분을 담당한 민솔 팀원이 </span><span lang="EN-US">Mobilenet v1 SSD lite</span>라는 <span lang="EN-US">detection </span>모델로 테스트를 진행중이었습니다<span lang="EN-US">.</span>
+<span lang="EN-US">SSD </span>모델이 <span lang="EN-US">fps </span>성능이 더 좋았고<span lang="EN-US">, tracking</span>도 더 자연스럽게 진행이 되었기 때문에<span lang="EN-US">, Object Detection </span>모델을 <span lang="EN-US">Mobilenet v1 SSD lite</span>로 사용하기로 결정하였습니다<span lang="EN-US">.</span>
+<span style="mso-fareast-font-family:맑은 고딕;
+mso-fareast-theme-font:minor-latin" lang="EN-US"> </span>
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">또한 </span><span lang="EN-US">mediapipe</span>의 <span lang="EN-US">blazeface</span>를 <span lang="EN-US">Object Detection</span>과 함께 사용하기로 하였습니다<span lang="EN-US">.</span>
+![](https://devocean.sk.com/editorImg/2022/11/11/cc389d380b1bb34f9cb402cce3aaf65026e4720da4f5714e0cbcade4c89758fa)
+<span style="mso-no-proof:yes">![]()</span>mediapipe - blazepose
 
 
-
-프레임 보간 후에 테스트를 해보았을 때, 이전 영상과 비교했을 때 프레임이 흔들리는 현상이 많이 개선된 것을 확인할 수 있었습니다!
-
-<br>
-## **WebRTC**
-
-다음으로 세번째 개발 항목인 **WebRTC를 이용한 초저지연 스트리밍**에 대해 설명드리겠습니다.
-실시간 스트리밍 기술 중 WebRTC를 저희 과제에 채택한 가장 큰 이유는, 바로 1초 이하의 Latency 때문입니다.
-뿐만 아니라 WebRTC는 다양한 오픈소스 라이브러리를 공개하고 있습니다. 시청자들이 촬영 장면을 몰입하며 시청하기 위해서는, 지연이 거의 없는 WebRTC가 가장 적합한 실시간 스트리밍 포맷입니다.
-![](https://devocean.sk.com/editorImg/2022/11/30/b9eb8f1bc71e63737c75afdae9a52a23b8e02052c309684b159e795624714c93)
-
-<br>
-<br>
-현재 WebRTC Signaling 서버는 아래 사진의 오른쪽 상단처럼 Mesh 방식으로 구축되어 있으나, 다수의 시청자와 미디어 품질을 위해 아래처럼 SFU 구조의 서버를 개발 중입니다.
-![](https://devocean.sk.com/editorImg/2022/11/30/28ea1de3876cdbede895ea318b308ad20e46e5836d364fe9b6ce7cd17b440a8e)
-
-
-WebRTC 스트리밍을 개발하면서 발생한 이슈는 두 가지가 있었습니다.
-
-
-<span style="font-family:Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Noto Color Emoji,Segoe UI Symbol,Android Emoji,EmojiSymbols;line-height:1em;white-space:nowrap;font-size:1em" aria-label="✔️" role="image">✔️</span> 먼저 브라우저별 호환성 문제인데요. Chrome과 Safari에서는 스트리밍이 잘 되지만, Edge 브라우저에서는 영상이 재생되지 않았습니다.
-이 이슈는 사용 중인 WebRTC 라이브러리의 기능별 호환성을 검토하여 해결할 예정입니다.
-<span role="image" aria-label="✔️" style="font-family:Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Noto Color Emoji,Segoe UI Symbol,Android Emoji,EmojiSymbols;line-height:1em;white-space:nowrap;font-size:1em">✔️</span> 둘째로 Audio의 하울링 이슈가 있었으나, 이는 WebRTC API에 내장된 Echo Cancellation이라는 기능으로 해결할 계획입니다.
-
-
-나아가 스트리밍 관련 앞으로의 세부 계획을 말씀드리겠습니다.
-먼저 초기 로딩시간을 줄이기 위해 트랙 선택을 최적화하고, 중복 로딩 방지 방안을 연구할 예정입니다.
-또한 영상 처리에 따른 Latency를 개선하기 위하여, 스트리밍 지표의 성능을 조사한 다음, 주요 Latency 영향 요인을 분석할 예정입니다.
-주요 스트리밍 지표에는 7가지(Packet Loss, NAK Count, Keyframe Interval, RTT / Delay, Bit Rate, Jitter Buffer Delay)가 있으며, <span data-reactroot="" class="notion-enable-hover" data-token-index="1" style="font-weight:600">WebRTC-Internal </span>이라는 Tool로 이 지표 값들을 측정하려 합니다!
+객체를 인식하는 것만 하는 것이 아니라<span lang="EN-US">, </span>얼굴 좌표 값을 통해 얼굴을 인식한다면 조금 더 높은 정확도로 객체를 트래킹할 수 있기 때문이에요<span lang="EN-US">!</span>
+<span lang="EN-US">Blazeface</span>를 통해 인식한 얼굴과 <span lang="EN-US">Object Detection</span>모델을 통해 인식한 객체 중<span lang="EN-US">, </span>더 높은 정확도를 보이는 <span lang="EN-US">Box</span>를 기준으로 <span lang="EN-US">Tracking</span>을 진행하도록 알고리즘을 작성하였습니다<span lang="EN-US">.</span>
+<span style="mso-fareast-font-family:맑은 고딕;
+mso-fareast-theme-font:minor-latin" lang="EN-US"> </span>
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">하지만 여전히 </span><span lang="EN-US">tracking</span>이 보기에 부드러울 정도로 진행되지 않는다는 단점이 존재하였습니다<span lang="EN-US">.</span>
+<span style="mso-fareast-font-family:맑은 고딕;
+mso-fareast-theme-font:minor-latin" lang="EN-US">Sprint3</span><span style="mso-fareast-font-family:
+맑은 고딕;mso-fareast-theme-font:minor-latin">가 끝나고 멘토님과 진행한 미팅에서 매 프레임 마다 </span><span lang="EN-US">detection</span>을 진행하기 때문에 요구되는 연산이 많으니<span lang="EN-US">, detection</span>을 듬성듬성 수행해서 연산량을 줄이라는 피드백을 받았습니다<span lang="EN-US">.</span>
+<span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
+minor-latin">더하여</span><span lang="EN-US"> Tracking </span>알고리즘도 더 좋은 성능을 위한 방법을 고민해보았습니다<span lang="EN-US">.</span>
+<span style="mso-fareast-font-family:맑은 고딕;
+mso-fareast-theme-font:minor-latin" lang="EN-US"> </span>
+<span lang="EN-US">Object Tracking Methods </span>자료 조사를 진행한 결과<span lang="EN-US">, SORT(</span><span class="notion-enable-hover">Simple Online Realtime Tracker)에 대해 알게되었습니다</span><span lang="EN-US">. SORT</span>는 다중 객체 탐지 알고리즘<span lang="EN-US"> MOT(Multi Object Tracking) </span>입니다<span lang="EN-US">.</span>
+![](https://devocean.sk.com/editorImg/2022/11/11/9fa4264f1bc03cca6f72d616b73b8245057a76bd6ba2e74372051a3cf3af6218)
+탐지된 객체의 경계상자를 이용하여 객체의 속도를 [<span lang="EN-US">칼만 필터(Kalman Filter)</span>]()로 추정하여 다음 프레임에서 객체의 위치를 예측하는 방식으로 사용됩니다<span lang="EN-US">.</span>
+Kalman filter는 이전 프레임에 등장한 개체를 이용하여 다음 프레임의 개체의 위치를 예측하고 측정합니다.
+Detection 중 발생되는 Noise를 처리하는데 도움을 준다는 특징이 있습니다.
+영상에서의 Tracking은 선형성(물체가 순간적으로 사라지거나 나타나지 않음)을 나타내기 때문에 영상 Tracking에서 적합하다고 할 수 있습니다.
+예를 들어<span lang="EN-US">, </span>**<span class="notion-enable-hover">N</span>**번째 프레임에서 탐지된 경계상자<span lang="EN-US"> </span>**<span class="notion-enable-hover">F</span>**는 칼만 필터로<span lang="EN-US"> </span>**<span class="notion-enable-hover">N+1</span>**번째 프레임에서의<span lang="EN-US"> </span>**<span class="notion-enable-hover">F\*</span>**를 추정하게 됩니다.
+여기서<span lang="EN-US"> </span>**<span class="notion-enable-hover">N+1</span>**번째 프레임에서 새롭게 탐지된 객체 정보 **<span lang="EN-US">F'</span>**와 예측된<span lang="EN-US"> </span>**<span class="notion-enable-hover">F\*</span>**의 유사도를 [<span style="color:blue">IOU</span><span lang="EN-US">의 거리값 </span>]()그리고<span lang="EN-US"> </span>[<span lang="EN-US">헝가리안 알고리즘 </span>]()등을 통해 정렬하고 매칭하여<span lang="EN-US"> </span>**<span class="notion-enable-hover">N</span>**번째에서 탐지된 객체의 정보를<span lang="EN-US"> </span>**<span class="notion-enable-hover">N+1</span>**에서 이어나갈<span lang="EN-US">  </span>수 있게 합니다<span lang="EN-US">.</span>
+이 칼만필터를 통해서 빠른 속도와 실시간 가능성을 확보할 수 있게 됩니다<span lang="EN-US">!</span>
 
 
-이제 이 WebRTC 기술을 통해서 영상 처리된 video를 스트리밍해야 하는데, 저희는 이 스트리밍 영상을 웹 브라우저 상에서 시청하기로 구상했었습니다.
-그러나 python 코드로 영상 처리된 video를, JS로 구축된 Signaling Server에 실시간으로 전송하는 과정이 쉽지 않았습니다.
+여기서 IoU란 Intersection over Union로 Object Detection 분야에서 예측 Bounding Box와 Ground Truth가 일치하는 정도를 0과 1 사이의 값으로 나타낸 값을 말해요.
+![](https://devocean.sk.com/editorImg/2022/11/11/8b82b36293ea81ad37638db5d45fab9e2bb9ec9abf7657902cd9e5b92cee8d56)
+<span data-reactroot="" class="notion-enable-hover" data-token-index="0" style="font-weight:600">Object Detection에서 단순히 box의 좌표 차이를 통해 loss를 구하는 것보다 IoU를 loss에 활용하는 것이 regression loss에 더 적합해요.</span>
 
 
-모델링 부분과 이 스트리밍 서버를 연동하려는 방법이 3가지가 있었는데요.
-첫번째, JS로 구축된 서버에서 python 스크립트를 로드하는 방식으로는 실시간 영상 데이터를 로드할 수 없었습니다.
-다음으로 영상 처리를 JS로 작성하는 방식으로는 고도화된 영상 처리가 쉽지 않았습니다.
-따라서 마지막으로 python으로 서버를 구축하고, 영상 처리 코드를 연동하는 방식을 채택했습니다.
+**헝가리안 알고리즘(Hungarian matching algorithm**\) 은 O\(\|V^3\|\)의 시간복잡도로 좀 더 효율적이고 빠르게 해결하는 알고리즘이에요\.
+가중치가 있는 이분 그래프(weighted bitarted graph)에서 maximum weight matching을 찾기 위한 알고리즘이죠.
+헝가리안 알고리즘에 적용되는 핵심 아이디어는 바로 “Cost matrix에서 row, column 방향으로 값을 빼거나 더한 후 최적의 연결(optimal matching)을 찾는 것은 Original Cost matrix에서 최적의 연결을 찾은 결과와 동일하다” 이에요.
+즉, 복잡한 숫자로 이루어진 인접 행렬을 쉽게 변형해서 최적의 선택이 무엇인지 알기 쉽게 만든 후, 선택하자는 것이에요.
 
 
-세 번째 솔루션으로 모델 및 영상 처리 라이브러리를 웹앱에 탑재하여서,
-![](https://devocean.sk.com/editorImg/2022/11/30/1debe7e567ff6d7259723cbcbd9492bc697c2dfe7a234ac1985aac753c0a1605)최종 산출물로서 라이브 트래킹 영상을 시청할 수 있는 웹앱을 만들어냈습니다.
-![](https://devocean.sk.com/editorImg/2022/11/30/dd4c7c9cfca40f107992029c1f5cea3e54aeed405ad30bf18502ffd5d1b62c6b)
+<span lang="EN-US">Deep SORT</span>는 <span lang="EN-US">sort</span>를 확장한 개념인데요. <span lang="EN-US">Sort</span>는<span lang="EN-US"> Kalman filter</span>가 뛰어나긴 하지만<span lang="EN-US">, 그 효율성에도 불구하고 </span>실제 상황에서 발생하는<span lang="EN-US"> Occulusion</span>이나<span lang="EN-US"> ID switching </span>에는 불안정하다는 한계점이 있기 때문이에요<span lang="EN-US">.</span>
+![](https://devocean.sk.com/editorImg/2022/11/11/f4514409df16b8088e4af9969ac1d14e7977814faa738e9e244f502c63cee800)
+<span style="color:#595959;
+mso-themecolor:text1;mso-themetint:166">다른 사람들에 의해 혼자 걷고 있는 남성의</span><span lang="EN-US"> BBox</span>가 사라진 상황<span lang="EN-US">(Tracking X)</span>
 
 
-주요 기능으로 해상도나 비디오 코덱 등의 옵션을 설정한 후, 방에 입장하여 다음과 같이 트래킹되는 영상을 시청할 수 있습니다.
-이런 식으로 피사체가 주어진 프레임에서 옆으로 이동하면, 같은 방향으로 트래킹되는 과정을 실시간으로 볼 수 있습니다!
-![](https://devocean.sk.com/editorImg/2022/11/30/e77715da04af97384272c568cbb1d1c6d53778db36b4137ee8b69bcbb4bd063d)
+<span lang="EN-US">\* Occulusion</span>은 위와 같이 개체가 어떤 상황에 의해 가려지는 현상을 말합니다<span lang="EN-US">.</span>
+![](https://devocean.sk.com/editorImg/2022/11/11/72c88d82bd4633d8c10da9c1a102e37ba1131ae2cf7ad851cfba67a289b8cf84)
+<span style="color: rgb(0, 0, 0); font-family: Noto Sans Light;">\* ID Switching은 MOT의 특징 중 다양한 개체가 움직일 때, ID의 추적이 변경될 수 있다는 것이에요</span>
+<span style="font-family: Noto Sans Light;">예를 들어 위와 같이 축구 경기를 위에서 관찰하고 있을 때, 선수들의 ID를 추적하는 상황이 제대로 이뤄지지 않는다는 점이 있습니다.</span>
+<span style="mso-no-proof:yes">![]()![](https://devocean.sk.com/editorImg/2022/11/11/5a6699343cc37effe3491af23fb311c7d83aa5d94b27824680c0f00cb5a25ee5)</span>
 
 
-지금까지 *Team* <span style="color: #0ac90b">금쪽이들</span>이었습니다! 😎
+<span style="mso-bidi-font-size:10.0pt;
+mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:minor-latin;mso-bidi-font-family:
+굴림;mso-font-kerning:0pt" lang="EN-US">DeepSORT</span><span style="mso-bidi-font-size:10.0pt;
+mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:minor-latin;mso-bidi-font-family:
+굴림;mso-font-kerning:0pt">의 가장 큰 특징으로는</span><span lang="EN-US">Deep Appearance Descriptor </span>으로<span lang="EN-US"> Re-identification(ReID) </span>모델을 적용하여<span lang="EN-US"> ID Switching </span>문제를 해결<span lang="EN-US"> & Matching Cascade </span>로직으로 더 정확한 추적을 가능하게 해요<span lang="EN-US">.</span>
+장점은 매우 빠른 추적으로<span lang="EN-US"> real-time </span>가능하고 높은 정확도를 가져<span lang="EN-US"> sort</span>에 비해<span lang="EN-US"> ID swithing이 </span>감소한다는 점이에요<span lang="EN-US">.</span>
+![](https://devocean.sk.com/editorImg/2022/11/11/9f06af72a23f407d33f0cd4d19a8b86dbbdcfa1707bc3464d2970c4977c8cf83)
+Deep Sort와 Sort의 성능을 분석한 논문 자료입니다.
+
+
+위와 같이 조사한 <span lang="EN-US">SORT </span>알고리즘을 사용해서 <span lang="EN-US">Tracking </span>성능을 개선해보기로 하였습니다<span lang="EN-US">!</span>
+<span lang="EN-US">SORT</span>를 사용하였을 때<span lang="EN-US">, Tracking</span>이 끊기면서 실행이 되는 문제점이 발생해서 <span lang="EN-US">Deep SORT</span>로 시도를 해보았습니다<span lang="EN-US">.</span>
+<span class="notion-enable-hover">Deep SORT</span>는 기존<span lang="EN-US"> SORT</span>와 차이점이 있다면 <span lang="EN-US">matching cascade</span>를 진행한다는 점이에요<span lang="EN-US">.</span>
+<span lang="EN-US">Matching cascadefks track</span>과 <span lang="EN-US">detection</span>과의 정보를 유사도가 큰 순서대로 <span lang="EN-US">matching</span>하는 것이에요<span lang="EN-US">.</span>
+<span lang="EN-US">SORT</span>에서는 이부분이 구현되어있지 않았습니다<span lang="EN-US">.</span>
+또<span lang="EN-US"> sort</span>랑 다르게 이미지를 <span lang="EN-US">feature extracting</span>한다는 점이 큰 차이였습니다<span lang="EN-US">.</span>
+하지만 <span lang="EN-US">Deep SORT</span>를 사용하였을 때도<span lang="EN-US">, Tracking</span>이 잘되지 않는 문제가 발생하였습니다<span lang="EN-US">.</span>
+결국 최종적으로 <span lang="EN-US">FastMOT</span>의 로직을 따와서 해결하여 현재 모델을 완성하였습니다<span lang="EN-US">!</span>
+
+
+멘토님께서 연구를 위해서 <span lang="EN-US">GPU</span>서버를 사용할 수 있게해주셔서<span lang="EN-US">, Object Detection </span>모델 테스트용으로 사용해보았습니다<span lang="EN-US">.</span>
+<span lang="EN-US">Real-time</span>을 구현할 수 있다고 널리 알려진 <span lang="EN-US">YOLOv4</span>와 <span lang="EN-US">YOLOv7</span>을 테스트 해보기로 하였습니다<span lang="EN-US">.</span>
+<span lang="EN-US">YOLOv4</span>는 <span lang="EN-US">make </span>단계에서 에러가 계속해서 발생하였습니다<span lang="EN-US">.</span>
+그래서 <span lang="EN-US">YOLOv4</span>를 테스트 해보는 데는 실패하였습니다<span lang="EN-US">.</span>
+<span lang="EN-US">GPU</span>를 <span lang="EN-US">ssh</span>로 연결해서 사용해본 적은 처음이라<span lang="EN-US">, </span>많이 헤매고 시간이 들었습니다<span lang="EN-US">.</span>
+특히 <span lang="EN-US">cuda</span>와 <span lang="EN-US">pytorch </span>버전 호환 문제가 계속 발생하였습니다<span lang="EN-US">. YOLOv7</span>은 <span lang="EN-US">YOLOv4</span>보다는 실행시키는 것이 간단해서 실행시키는 데는 성공하였습니다<span lang="EN-US">.</span>
+
+
+모델 테스트에 있어서 몇가지 한계점이 존재하였습니다<span lang="EN-US">.</span>
+먼저 테스트의 정량적 기준 설정의 어려움과 영상의 실시간 입력을 받아오는 저희 팀의 코드를 <span lang="EN-US">GPU</span>서버를 이용해서 사용하기 어려웠습니다<span lang="EN-US">.</span>
+또한 <span lang="EN-US">CPU</span>를 사용한 지금 모델과 <span lang="EN-US">web</span>과의 연결도 안정적인 상황이 아니기 때문에<span lang="EN-US">, GPU</span>를 사용한다고 해도 <span lang="EN-US">web</span>과 안정적으로 연결이 될 지 확신이 서지 않았습니다<span lang="EN-US">.</span>
+현재는 CPU를 이용해서 연구를 진행하기로 결정하였습니다.
+
+
+현재는 특허 관련한 <span lang="EN-US">Sprint6 </span>단계로<span lang="EN-US">, </span>특허 출원 방법에 대한 조사와 특허 아이디어 구현을 목표로 연구 단계가 진행중입니다<span lang="EN-US">.</span>
+
+
+그럼 앞으로도 Team 금쪽이들의 연구 지켜봐주세요!
+감사합니다.
+
+***
+
+**[Reference]**
+\- SORT와 DeepSORT의 혼합을 이용한 실시간 다중객체 추적 : [http://ki-it.com/xml/30742/30742.pdf](http://ki-it.com/xml/30742/30742.pdf)
+\- Deep Sort paper : [https://arxiv.org/pdf/1703.07402.pdf](https://arxiv.org/pdf/1703.07402.pdf)
+\- Sort paper : [https://arxiv.org/pdf/1602.00763.pdf](https://arxiv.org/pdf/1602.00763.pdf)
 
 
 ***
