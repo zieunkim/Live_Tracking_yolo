@@ -3,7 +3,11 @@
 
 <span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
 minor-latin">안녕하세요</span><span lang="EN-US">! SKT AI Fellowship 5</span>번 연구과제 <span lang="EN-US"><</span>라이브 트래킹<span lang="EN-US">></span>을 연구하고 있는 <span lang="EN-US">Team</span>금쪽이들의 김지은 입니다<span lang="EN-US">.</span>
+
+
 지금부터 제가 <span lang="EN-US">AIF</span>과제를 위해서 공부해왔던 것들에 대해 소개해보려고 해요<span lang="EN-US">! 😀</span>
+
+
 <span style="mso-fareast-font-family:맑은 고딕;
 mso-fareast-theme-font:minor-latin" lang="EN-US"> </span>
 <span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
@@ -11,6 +15,7 @@ minor-latin">처음 제 글을 읽으시는 분들을 위해, 간단하게 과�
 <span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
 minor-latin">라이브 트래킹이란 실시간으로 촬영 중인 영상 내에서 움직이는 피사체를 인식해 자동으로 트래킹해주는 기술이에요</span><span lang="EN-US">.</span>
 ![](https://devocean.sk.com/editorImg/2022/11/11/a9c479b45253dcd845847102724ef3f5c688e17cf57e501b7d3eb212e8f821b7)
+
 
 ***
 
