@@ -1,4 +1,4 @@
-# Live_Tracking_yolo
+# SKT AI Fellowship 4기
 
 
 <span style="mso-fareast-font-family:맑은 고딕;mso-fareast-theme-font:
